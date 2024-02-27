@@ -6,7 +6,8 @@ using UnityEngine;
 public class StartMenuController : MonoBehaviour
 {
     public GameObject startMenu; 
-    public GameObject playerCamera; 
+    public GameObject playerCamera;
+    public GameObject textCanvas;
 
     void Start()
     {
@@ -15,6 +16,7 @@ public class StartMenuController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
 
         // Ensure the start menu is active and the player camera is inactive at the start
+        textCanvas.SetActive(true);
         startMenu.SetActive(true);
         playerCamera.SetActive(false);
     }
@@ -26,6 +28,8 @@ public class StartMenuController : MonoBehaviour
 
         // Enable the player camera
         playerCamera.SetActive(true);
+        
+        textCanvas.SetActive(false);
 
         // Hide and lock the cursor when the game starts
         Cursor.visible = false;
