@@ -26066,7 +26066,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
 --- !u!20 &963194227
 Camera:
   m_ObjectHideFlags: 0
@@ -42554,13 +42554,11 @@ MonoBehaviour:
   minDelay: 1
   maxDelay: 150
   force: 10
-
 --- !u!1 &1613497670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5411569968453932687, guid: 827062553953ace449df65073bc88caa, type: 3}
   m_PrefabInstance: {fileID: 837715730}
   m_PrefabAsset: {fileID: 0}
-
 --- !u!114 &1613497672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42582,7 +42580,6 @@ MonoBehaviour:
   - {fileID: 450921496}
   - {fileID: 1705438498}
   playerCamera: {fileID: 1656206103}
-
 --- !u!1 &1617081884
 GameObject:
   m_ObjectHideFlags: 0
