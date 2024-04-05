@@ -18370,6 +18370,33 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &734652312 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5484170796833851192, guid: 4ab19bfbeb9048a45a44b9ce3847f750, type: 3}
+  m_PrefabInstance: {fileID: 2132159066}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &734652317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734652312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6782c3acdc453a648abf69bf95246b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remoteCameras:
+  - {fileID: 1296250109}
+  - {fileID: 877834379}
+  - {fileID: 855535901}
+  - {fileID: 1617081887}
+  - {fileID: 450921496}
+  - {fileID: 1705438498}
+  - {fileID: 151912913}
+  - {fileID: 1258755837}
+  playerCamera: {fileID: 963194225}
 --- !u!1 &735569444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 439239393980121046, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
@@ -21885,6 +21912,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5417272378840401517, guid: 827062553953ace449df65073bc88caa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 837715734}
+    - targetCorrespondingSourceObject: {fileID: 5411569968453932687, guid: 827062553953ace449df65073bc88caa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1613497672}
   m_SourcePrefab: {fileID: 100100000, guid: 827062553953ace449df65073bc88caa, type: 3}
 --- !u!4 &837715731 stripped
 Transform:
@@ -31760,7 +31790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8124992354451333861, guid: 0e2e9d86e44cdba4b9e3bb8c0355c34a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.3239
+      value: 4.34
       objectReference: {fileID: 0}
     - target: {fileID: 8124992354451333861, guid: 0e2e9d86e44cdba4b9e3bb8c0355c34a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31768,7 +31798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8124992354451333861, guid: 0e2e9d86e44cdba4b9e3bb8c0355c34a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 49.134
+      value: 49.18
       objectReference: {fileID: 0}
     - target: {fileID: 8124992354451333861, guid: 0e2e9d86e44cdba4b9e3bb8c0355c34a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -34622,7 +34652,7 @@ MonoBehaviour:
   - {fileID: 450921496}
   - {fileID: 1705438498}
   - {fileID: 151912913}
-  mainCamera: {fileID: 0}
+  playerCamera: {fileID: 0}
 --- !u!4 &1285508947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8220780882054941164, guid: e2fdcaac11701fe438724a8a8b3a76c5, type: 3}
@@ -42524,6 +42554,35 @@ MonoBehaviour:
   minDelay: 1
   maxDelay: 150
   force: 10
+
+--- !u!1 &1613497670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5411569968453932687, guid: 827062553953ace449df65073bc88caa, type: 3}
+  m_PrefabInstance: {fileID: 837715730}
+  m_PrefabAsset: {fileID: 0}
+
+--- !u!114 &1613497672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613497670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6782c3acdc453a648abf69bf95246b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  remoteCameras:
+  - {fileID: 1296250109}
+  - {fileID: 877834379}
+  - {fileID: 855535901}
+  - {fileID: 1258755837}
+  - {fileID: 1617081887}
+  - {fileID: 450921496}
+  - {fileID: 1705438498}
+  playerCamera: {fileID: 1656206103}
+
 --- !u!1 &1617081884
 GameObject:
   m_ObjectHideFlags: 0
@@ -60334,7 +60393,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5484170796833851192, guid: 4ab19bfbeb9048a45a44b9ce3847f750, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 734652317}
   m_SourcePrefab: {fileID: 100100000, guid: 4ab19bfbeb9048a45a44b9ce3847f750, type: 3}
 --- !u!4 &2132159067 stripped
 Transform:
