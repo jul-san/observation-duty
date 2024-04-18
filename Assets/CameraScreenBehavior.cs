@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class CameraScreenBehavior : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class CameraScreenBehavior : MonoBehaviour
     private int currentCameraIndex = 0;
     private Camera mainCamera;
     private bool isCameraViewActive = false;
+        public Texture2D defaultCursor;
+    public Texture2D cameraCursor;
 
     public bool IsCameraViewActive()
     {
@@ -45,6 +49,9 @@ public class CameraScreenBehavior : MonoBehaviour
 
 public void ActivateCameraView()
 {
+    Cursor.SetCursor(cameraCursor, Vector2.zero, CursorMode.Auto);
+    Cursor.visible = true;  // Make sure the cursor is visible
+    Cursor.lockState = CursorLockMode.None;  // Unlock the cursor so it can move freely
     isCameraViewActive = true;
 
     // Find the main camera in the scene
@@ -57,15 +64,13 @@ public void ActivateCameraView()
         mainCamera = FindObjectOfType<Camera>();
     }
 
-    // If no camera is found, log a warning
-    if (mainCamera == null)
+    if (mainCamera != null)
     {
-        Debug.LogWarning("No main camera found in the scene. Camera switching may not work correctly.");
+        mainCamera.enabled = false;
     }
     else
     {
-        // Disable the main camera
-        mainCamera.enabled = false;
+        Debug.LogError("Main camera reference is not assigned in the Inspector!");
     }
 
     // Enable the first remote camera
@@ -74,29 +79,18 @@ public void ActivateCameraView()
         remoteCameras[currentCameraIndex].enabled = true;
     }
 
-    // Disable the player movement
-    if (playerCamera != null)
-    {
-        Rigidbody playerRigidbody = playerCamera.GetComponent<Rigidbody>();
-        if (playerRigidbody != null)
-        {
-            playerRigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        }
-        else
-        {
-            Debug.LogError("Rigidbody component not found on playerCamera GameObject!");
-        }
-    }
-    else
-    {
-        Debug.LogError("Player camera is not assigned!"); // Log an error if playerCamera is null
-    }
+    Debug.Log("Main Camera: " + mainCamera);
+    Debug.Log("Current Remote Camera: " + remoteCameras[currentCameraIndex]);
 }
 
 public void DeactivateCameraView()
 {
     Debug.Log("Player Camera: " + playerCamera); // Log the playerCamera variable
 
+    // Disable camera view and revert to default cursor
+    Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+    Cursor.visible = true;  // Ensure the cursor remains visible
+    Cursor.lockState = CursorLockMode.Locked;  // Lock the cursor back if needed
     isCameraViewActive = false;
 
     // Disable all remote cameras
@@ -114,24 +108,7 @@ public void DeactivateCameraView()
     {
         Debug.LogError("Main camera is not assigned!"); // Log an error if mainCamera is null
     }
-
-    // Reactivate the player camera if it's not null
-    if (playerCamera != null)
-    {
-        // Re-enable the player movement
-        Rigidbody playerRigidbody = playerCamera.GetComponent<Rigidbody>();
-        if (playerRigidbody != null)
-        {
-            playerRigidbody.constraints = RigidbodyConstraints.None;
-        }
-        else
-        {
-            Debug.LogError("Rigidbody component not found on playerCamera GameObject!");
-        }
-    }
-    else
-    {
-        Debug.LogError("Player camera is not assigned!"); // Log an error if playerCamera is null
-    }
+    Debug.Log("Main Camera: " + mainCamera);
+    Debug.Log("Current Remote Camera: " + remoteCameras[currentCameraIndex]);
 }
 }

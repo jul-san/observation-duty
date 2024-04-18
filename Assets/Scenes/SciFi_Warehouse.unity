@@ -18310,6 +18310,8 @@ MonoBehaviour:
   - {fileID: 151912913}
   - {fileID: 1258755837}
   playerCamera: {fileID: 963194225}
+  defaultCursor: {fileID: 0}
+  cameraCursor: {fileID: 0}
 --- !u!1 &735569444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 439239393980121046, guid: 1e3974e3db8c48c41b2604d2478e7e9e, type: 3}
@@ -34494,7 +34496,9 @@ MonoBehaviour:
   - {fileID: 450921496}
   - {fileID: 1705438498}
   - {fileID: 151912913}
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 963194225}
+  defaultCursor: {fileID: 2800000, guid: 7825633d016559249ade03ab1979c7b6, type: 3}
+  cameraCursor: {fileID: 2800000, guid: 7825633d016559249ade03ab1979c7b6, type: 3}
 --- !u!4 &1285508947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8220780882054941164, guid: e2fdcaac11701fe438724a8a8b3a76c5, type: 3}
@@ -42351,6 +42355,8 @@ MonoBehaviour:
   - {fileID: 450921496}
   - {fileID: 1705438498}
   playerCamera: {fileID: 1656206103}
+  defaultCursor: {fileID: 0}
+  cameraCursor: {fileID: 0}
 --- !u!1 &1617081884
 GameObject:
   m_ObjectHideFlags: 0

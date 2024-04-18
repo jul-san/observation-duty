@@ -20,41 +20,82 @@ public class MonitorInteract : MonoBehaviour
 
     private void Update()
     {
-        // Reset the flag every frame.
-        showInteractionMessage = false;
-
-        // Check if the player is within the interaction distance and is looking at the TV.
+        // Check the distance and whether the player is looking at the TV.
         if (Vector3.Distance(player.position, transform.position) < interactionDistance && IsPlayerLookingAtTV())
         {
-            DisplayInteractionMessage();
-
-            // Check if the "E" key was pressed and the interaction message is being displayed.
-            if (showInteractionMessage && Input.GetKeyDown(KeyCode.E))
+            if (!cameraScreenBehavior.IsCameraViewActive())
             {
-                if (!cameraScreenBehavior.IsCameraViewActive()) // If not in camera view, activate it
-                {
-                    // Disable player movement while in camera view
-                    // Assuming you have a PlayerMovement script, you can disable it here
-                    PlayerMovement movementScript = player.GetComponent<PlayerMovement>();
-                    if (movementScript != null)
-                    {
-                        movementScript.enabled = false;
-                    }
+                // Only display the interaction message if not in camera view
+                DisplayInteractionMessage();
 
+                // Enter camera view on pressing 'E'
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    DisablePlayerMovement();
                     cameraScreenBehavior.ActivateCameraView();
                 }
-                else // If already in camera view, deactivate it
+            }
+            else
+            {
+                // Display a different message or none at all
+                // Ensure 'E' key exits the camera view
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    // Re-enable player movement
-                    PlayerMovement movementScript = player.GetComponent<PlayerMovement>();
-                    if (movementScript != null)
-                    {
-                        movementScript.enabled = true;
-                    }
-
+                    EnablePlayerMovement();
                     cameraScreenBehavior.DeactivateCameraView();
                 }
             }
+        }
+        else if (cameraScreenBehavior.IsCameraViewActive())
+        {
+            // Player is already in camera view but not necessarily looking at TV anymore
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                EnablePlayerMovement();
+                cameraScreenBehavior.DeactivateCameraView();
+            }
+        }
+    }
+
+
+    private void DisablePlayerMovement()
+    {
+        // Disable all possible movement controls here, including CharacterController, Rigidbody, or custom scripts.
+        if (characterController != null)
+        {
+            characterController.enabled = false;
+        }
+
+        PlayerMovement movementScript = player.GetComponent<PlayerMovement>();
+        if (movementScript != null)
+        {
+            movementScript.enabled = false;
+        }
+
+        Camera playerCamera = player.GetComponentInChildren<Camera>();
+        if (playerCamera != null)
+        {
+            playerCamera.enabled = false;
+        }
+    }
+
+    private void EnablePlayerMovement()
+    {
+        if (characterController != null)
+        {
+            characterController.enabled = true;
+        }
+
+        PlayerMovement movementScript = player.GetComponent<PlayerMovement>();
+        if (movementScript != null)
+        {
+            movementScript.enabled = true;
+        }
+
+        Camera playerCamera = player.GetComponentInChildren<Camera>();
+        if (playerCamera != null)
+        {
+            playerCamera.enabled = true;
         }
     }
 
@@ -74,24 +115,6 @@ public class MonitorInteract : MonoBehaviour
     private void DisplayInteractionMessage()
     {
         showInteractionMessage = true; // Set the flag to true when the player can interact with the TV.
-    }
-
-    private void DisablePlayerMovement()
-    {
-        // Disable player movement by disabling the CharacterController
-        if (characterController != null)
-        {
-            characterController.enabled = false;
-        }
-    }
-
-    private void EnablePlayerMovement()
-    {
-        // Enable player movement by enabling the CharacterController
-        if (characterController != null)
-        {
-            characterController.enabled = true;
-        }
     }
 
     private void OnGUI()
