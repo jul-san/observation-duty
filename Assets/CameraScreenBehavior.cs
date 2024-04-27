@@ -7,11 +7,12 @@ using Debug = UnityEngine.Debug;
 public class CameraScreenBehavior : MonoBehaviour
 {
     public List<Camera> remoteCameras;
-    public GameObject playerCamera; // Declare playerCamera as a public variable
+    public Camera playerCamera; // Declare playerCamera as a public Camera variable
+
     private int currentCameraIndex = 0;
-    private Camera mainCamera;
     private bool isCameraViewActive = false;
-        public Texture2D defaultCursor;
+
+    public Texture2D defaultCursor;
     public Texture2D cameraCursor;
 
     public bool IsCameraViewActive()
@@ -47,68 +48,61 @@ public class CameraScreenBehavior : MonoBehaviour
         remoteCameras[currentCameraIndex].enabled = true;
     }
 
-public void ActivateCameraView()
-{
-    Cursor.SetCursor(cameraCursor, Vector2.zero, CursorMode.Auto);
-    Cursor.visible = true;  // Make sure the cursor is visible
-    Cursor.lockState = CursorLockMode.None;  // Unlock the cursor so it can move freely
-    isCameraViewActive = true;
-
-    // Find the main camera in the scene
-    mainCamera = Camera.main;
-
-    // If Camera.main doesn't return a valid camera, try to find one manually
-    if (mainCamera == null)
+    public void ActivateCameraView()
     {
-        Debug.LogWarning("Main camera reference not found. Searching for a camera manually...");
-        mainCamera = FindObjectOfType<Camera>();
+        Cursor.SetCursor(cameraCursor, Vector2.zero, CursorMode.Auto);
+        Cursor.visible = true; // Make sure the cursor is visible
+        Cursor.lockState = CursorLockMode.None; // Unlock the cursor so it can move freely
+
+        isCameraViewActive = true;
+
+        if (playerCamera != null)
+        {
+            playerCamera.enabled = false;
+        }
+        else
+        {
+            Debug.LogError("Player camera reference is not assigned in the Inspector!");
+        }
+
+        // Enable the first remote camera
+        if (remoteCameras.Count > 0)
+        {
+            remoteCameras[currentCameraIndex].enabled = true;
+        }
+
+        Debug.Log("Player Camera: " + playerCamera);
+        Debug.Log("Current Remote Camera: " + remoteCameras[currentCameraIndex]);
     }
 
-    if (mainCamera != null)
+    public void DeactivateCameraView()
     {
-        mainCamera.enabled = false;
-    }
-    else
-    {
-        Debug.LogError("Main camera reference is not assigned in the Inspector!");
-    }
+        Debug.Log("Player Camera: " + playerCamera); // Log the playerCamera variable
 
-    // Enable the first remote camera
-    if (remoteCameras.Count > 0)
-    {
-        remoteCameras[currentCameraIndex].enabled = true;
+        // Disable camera view and revert to default cursor
+        Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+        Cursor.visible = true; // Ensure the cursor remains visible
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor back if needed
+
+        isCameraViewActive = false;
+
+        // Disable all remote cameras
+        foreach (var cam in remoteCameras)
+        {
+            cam.enabled = false;
+        }
+
+        // Re-enable the player camera if it's not null
+        if (playerCamera != null)
+        {
+            playerCamera.enabled = true;
+        }
+        else
+        {
+            Debug.LogError("Player camera is not assigned!"); // Log an error if playerCamera is null
+        }
+
+        Debug.Log("Player Camera: " + playerCamera);
+        Debug.Log("Current Remote Camera: " + remoteCameras[currentCameraIndex]);
     }
-
-    Debug.Log("Main Camera: " + mainCamera);
-    Debug.Log("Current Remote Camera: " + remoteCameras[currentCameraIndex]);
-}
-
-public void DeactivateCameraView()
-{
-    Debug.Log("Player Camera: " + playerCamera); // Log the playerCamera variable
-
-    // Disable camera view and revert to default cursor
-    Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
-    Cursor.visible = true;  // Ensure the cursor remains visible
-    Cursor.lockState = CursorLockMode.Locked;  // Lock the cursor back if needed
-    isCameraViewActive = false;
-
-    // Disable all remote cameras
-    foreach (var cam in remoteCameras)
-    {
-        cam.enabled = false;
-    }
-
-    // Re-enable the main camera if it's not null
-    if (mainCamera != null)
-    {
-        mainCamera.enabled = true;
-    }
-    else
-    {
-        Debug.LogError("Main camera is not assigned!"); // Log an error if mainCamera is null
-    }
-    Debug.Log("Main Camera: " + mainCamera);
-    Debug.Log("Current Remote Camera: " + remoteCameras[currentCameraIndex]);
-}
 }
