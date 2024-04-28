@@ -59,6 +59,7 @@
     <Analyzer Include="D:\Unity Editor\2022.3.18f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\TimersMadeEasyLite\Scripts\DemoFunctionsForEvents.cs" />
     <Compile Include="Assets\SciFi Warehouse Kit\Demo\Scripts\LightFlicker.cs" />
     <Compile Include="Assets\SciFi Warehouse Kit\Demo\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\MonitorInteract.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\ThemeEditor\ThemedUIElement.cs" />
     <Compile Include="Assets\ScifiOfficeLite\Scripts\DemoDoor.cs" />
     <Compile Include="Assets\SciFi Warehouse Kit\Demo\Scripts\PlayRandomSound.cs" />
+    <Compile Include="Assets\TimersMadeEasyLite\Scripts\Timer.cs" />
     <Compile Include="Assets\CameraScreenBehavior.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Misc\ExtraLinks.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Managers\UISettingsManager.cs" />
@@ -121,6 +123,7 @@
     <None Include="Assets\PSXShaderKit\Shaders\PSX-Unlit.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\PSXShaderKit\Shaders\PSX-UnlitTransparent.shader" />
+    <None Include="Assets\TimersMadeEasyLite\ReadMe.txt" />
     <None Include="Assets\PSXShaderKit\Shaders\PSX-Lite-VertexLit.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />

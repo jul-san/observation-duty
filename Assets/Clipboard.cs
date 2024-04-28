@@ -4,6 +4,7 @@ public class ClipboardInteract : MonoBehaviour
 {
     public float interactionDistance = 3f;
     public Transform player;
+    public Timer timer; // Reference to the Timer component
 
     private bool showInteractionMessage = false;
     private bool showMessage = false;
@@ -14,7 +15,6 @@ public class ClipboardInteract : MonoBehaviour
     private void Update()
     {
         showInteractionMessage = false;
-
         if (Vector3.Distance(player.position, transform.position) < interactionDistance && IsPlayerLookingAtClipboard())
         {
             showInteractionMessage = true;
@@ -24,6 +24,7 @@ public class ClipboardInteract : MonoBehaviour
         {
             showMessage = true;
             messageTimer = 0f;
+            timer.StartTimer(); // Start the timer
         }
 
         if (showMessage)
