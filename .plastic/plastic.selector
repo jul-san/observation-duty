@@ -1,0 +1,4 @@
+repository "observation-duty@julianwsan@cloud"
+  path "/"
+    br "/main"
+    co "/main"
