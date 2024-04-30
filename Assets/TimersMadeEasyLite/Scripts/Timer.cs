@@ -64,13 +64,13 @@ public class Timer : MonoBehaviour
     [Tooltip("Select the output type")]
     public OutputType outputType;
     public Text standardText;
-    public TextMeshProUGUI textMeshProText;
-    public Slider standardSlider;
-    public Image dialSlider;
+    //public TextMeshProUGUI textMeshProText;
+    //public Slider standardSlider;
+    //public Image dialSlider;
 
-    bool timerRunning = false;
-    bool timerPaused = false;
-    public double timeRemaining;
+    //bool timerRunning = false;
+    //bool timerPaused = false;
+    //public double timeRemaining;
     
 
     private void Awake()
@@ -158,9 +158,6 @@ public class Timer : MonoBehaviour
             if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime; // Decrease timeRemaining by the time passed since the last frame
-                int minutes = Mathf.FloorToInt(timeRemaining / 60);
-                int seconds = Mathf.FloorToInt(timeRemaining % 60);
-                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
             }
             else
             {
@@ -170,19 +167,19 @@ public class Timer : MonoBehaviour
             }
         }
 
-        public void StartTimer()
+        void StartTimer()
         {
             timerRunning = true;
         }
 
         // Call this method to pause the timer
-        public void PauseTimer()
+        void PauseTimer()
         {
             timerPaused = true;
         }
 
         // Call this method to resume the timer
-        public void ResumeTimer()
+        void ResumeTimer()
         {
             timerPaused = false;
         }
