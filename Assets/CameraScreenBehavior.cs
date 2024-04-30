@@ -25,11 +25,11 @@ public class CameraScreenBehavior : MonoBehaviour
         if (isCameraViewActive)
         {
             // Switch cameras with A and D keys
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 SwitchCamera(-1); // Switch to the previous camera
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 SwitchCamera(1); // Switch to the next camera
             }

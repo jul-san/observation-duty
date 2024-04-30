@@ -28,8 +28,8 @@ public class MonitorInteract : MonoBehaviour
                 // Only display the interaction message if not in camera view
                 DisplayInteractionMessage();
 
-                // Enter camera view on pressing 'E'
-                if (Input.GetKeyDown(KeyCode.E))
+                // Enter camera view on pressing 'comma'
+                if (Input.GetKeyDown(KeyCode.Comma))
                 {
                     DisablePlayerMovement();
                     cameraScreenBehavior.ActivateCameraView();
@@ -39,7 +39,7 @@ public class MonitorInteract : MonoBehaviour
             {
                 // Display a different message or none at all
                 // Ensure 'E' key exits the camera view
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.Comma))
                 {
                     EnablePlayerMovement();
                     cameraScreenBehavior.DeactivateCameraView();
@@ -49,7 +49,7 @@ public class MonitorInteract : MonoBehaviour
         else if (cameraScreenBehavior.IsCameraViewActive())
         {
             // Player is already in camera view but not necessarily looking at TV anymore
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Comma))
             {
                 EnablePlayerMovement();
                 cameraScreenBehavior.DeactivateCameraView();
@@ -119,7 +119,7 @@ public class MonitorInteract : MonoBehaviour
 
     private void OnGUI()
     {
-        if (cameraScreenBehavior.IsCameraViewActive())
+        /*if (cameraScreenBehavior.IsCameraViewActive())
         {
             // Always show exit text if in camera view
             Rect labelRect = new Rect(Screen.width / 2 - 100, Screen.height - 70, 200, 50);
@@ -132,7 +132,7 @@ public class MonitorInteract : MonoBehaviour
             Rect labelRect = new Rect(Screen.width / 2 - 100, Screen.height / 2 - 25, 200, 50);
             string message = "Press (E) to monitor cameras";
             GUI.Label(labelRect, message);
-        }
+        }*/
     }
 }
  
