@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "observation-duty.sln"
+    "dotnet.defaultSolution": "observation-duty.sln",
+    "dotnet.preferCSharpExtension": true
 }

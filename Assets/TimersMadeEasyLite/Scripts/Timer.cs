@@ -9,6 +9,15 @@ using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
+    public TextMeshProUGUI textMeshProText;
+    public Slider standardSlider;
+    public Image dialSlider;
+
+    bool timerRunning = false;
+    bool timerPaused = false;
+    public double timeRemaining = 60;
+
+
     public UnityEvent onTimerEnd;
 
     [Range(0, 23)]
@@ -144,6 +153,40 @@ public class Timer : MonoBehaviour
     }
     void Update()
     {
+        if (timerRunning && !timerPaused)
+        {
+            if (timeRemaining > 0)
+            {
+                timeRemaining -= Time.deltaTime; // Decrease timeRemaining by the time passed since the last frame
+                int minutes = Mathf.FloorToInt(timeRemaining / 60);
+                int seconds = Mathf.FloorToInt(timeRemaining % 60);
+                timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            }
+            else
+            {
+                timeRemaining = 0;
+                timerRunning = false;
+                // Timer has finished, do something here
+            }
+        }
+
+        public void StartTimer()
+        {
+            timerRunning = true;
+        }
+
+        // Call this method to pause the timer
+        public void PauseTimer()
+        {
+            timerPaused = true;
+        }
+
+        // Call this method to resume the timer
+        public void ResumeTimer()
+        {
+            timerPaused = false;
+        }
+
         if(timerRunning)
         {
             if(countMethod == CountMethod.CountDown)
