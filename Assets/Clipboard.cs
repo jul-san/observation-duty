@@ -4,14 +4,13 @@ public class ClipboardInteract : MonoBehaviour
 {
     public float interactionDistance = 3f;
     public Transform player;
+    public Timer timer; // Reference to the Timer component
 
     private bool showInteractionMessage = false;
     private bool showMessage = false;
     private string message = "Interactable clipboard message";
     private float messageTimer = 0f;
     private const float MessageDuration = 3f;
-    private bool timerRunning = false;
-    private float timerDuration = 10f;  // Duration of the timer
 
     private void Update()
     {
@@ -25,12 +24,7 @@ public class ClipboardInteract : MonoBehaviour
         {
             showMessage = true;
             messageTimer = 0f;
-            StartTimer();
-        }
-
-        if (timerRunning)
-        {
-            UpdateTimer();
+            timer.StartTimer(); // Start the timer
         }
 
         if (showMessage)
@@ -43,27 +37,10 @@ public class ClipboardInteract : MonoBehaviour
         }
     }
 
-    private void StartTimer()
-    {
-        timerRunning = true;
-        messageTimer = 0f;  // Resetting the timer when starting
-    }
-
-    private void UpdateTimer()
-    {
-        messageTimer += Time.deltaTime;
-        if (messageTimer >= timerDuration)
-        {
-            timerRunning = false;
-            Debug.Log("Timer Finished!");
-        }
-    }
-
     private bool IsPlayerLookingAtClipboard()
     {
         RaycastHit hit;
         Vector3 directionToClipboard = (transform.position - player.position).normalized;
-
         if (Physics.Raycast(player.position, player.forward, out hit, interactionDistance))
         {
             if (hit.transform == transform)
@@ -71,7 +48,6 @@ public class ClipboardInteract : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
 
