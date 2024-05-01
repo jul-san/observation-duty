@@ -72,11 +72,13 @@
     <Compile Include="Assets\ScifiOfficeLite\Scripts\DemoDoor.cs" />
     <Compile Include="Assets\SciFi Warehouse Kit\Demo\Scripts\PlayRandomSound.cs" />
     <Compile Include="Assets\TimersMadeEasyLite\Scripts\Timer.cs" />
+    <Compile Include="Assets\GetCameraName.cs" />
     <Compile Include="Assets\CameraScreenBehavior.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Misc\ExtraLinks.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Managers\UISettingsManager.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Audio\CheckSFXVolume.cs" />
     <Compile Include="Assets\PSXShaderKit\Demo\PSXExample_CameraMovement.cs" />
+    <Compile Include="Assets\JumpScare.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\ThemeEditor\ThemedUI.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\ThemeEditor\ThemedUIData.cs" />
     <Compile Include="Assets\StartMenu.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Assets\SciFi Warehouse Kit\Demo\Scripts\MouseComponent.cs" />
     <Compile Include="Assets\SlimUI\Modern Menu 1\Scripts\Audio\CheckMusicVolume.cs" />
     <Compile Include="Assets\PropBehaviour.cs" />
+    <Compile Include="Assets\TimerJumpScare.cs" />
     <Compile Include="Assets\SciFi Warehouse Kit\Demo\Scripts\PushPhysics.cs" />
     <Compile Include="Assets\ScifiOfficeLite\Scripts\DemoFirstPersonController.cs" />
     <Compile Include="Assets\PSXShaderKit\Demo\SpookyOrbFloat.cs" />
@@ -128,6 +131,7 @@
     <None Include="Assets\PSXShaderKit\Shaders\PSX-UnlitTransparent.shader" />
     <None Include="Assets\TimersMadeEasyLite\ReadMe.txt" />
     <None Include="Assets\PSXShaderKit\Shaders\PSX-Lite-VertexLit.shader" />
+    <None Include="Assets\ProjectSettings\ProjectVersion.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\PSXShaderKit\Shaders\ImageEffects\PSX-PostProcess-Accurate.shader" />
